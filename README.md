@@ -1,50 +1,121 @@
-# Welcome to your Expo app 👋
+## 🚀 Technologies Used
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+- **React Native**: 0.76.7
+- **Expo**: 52.0.37
+- **React**: 18.3.1
+- **TypeScript**
+- **@testing-library/react-native**: 13.1.0
 
-## Get started
+## 📦 Installation
 
-1. Install dependencies
+⚠️ Note: This project requires **Node.js 20** or later and **Java 17**. Please ensure you have the correct versions installed before proceeding.
 
-   ```bash
-   npm install
-   ```
+Make sure you have **Node.js** and **Expo** installed.
 
-2. Start the app
+### 1. Clone the repository
 
-   ```bash
-    npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```sh
+git clone git@github.com:perryhoang2012/personalfit-ai-app.git
+cd personalfit-ai-app
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### 2. Install dependencies
 
-## Learn more
+```sh
+yarn
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+or
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```sh
+npm install
+```
 
-## Join the community
+## ▶️ Run the Application
 
-Join our community of developers creating universal apps.
+### 1. Run on a device or emulator
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```sh
+yarn start
+```
+
+or
+
+```sh
+npm start
+```
+
+### 2. Run on a device or emulator (iOS)
+
+```sh
+yarn ios
+```
+
+or
+
+```sh
+npm run ios
+```
+
+### 3. Run on a device or emulator (Android)
+
+```
+yarn android
+```
+
+or
+
+```
+npm run android
+```
+
+### 4. Run with prebuild (iOS & Android folders required)
+
+If you want to run the application in prebuild mode with native iOS and Android folders, switch to the appropriate branch:
+
+```
+git checkout feature/prebuild
+```
+
+Then, install dependencies and run:
+
+```
+expo prebuild
+```
+
+Finally, run the app:
+
+```
+yarn android
+```
+
+or
+
+```
+yarn ios
+```
+
+⚠️ Note: Running with prebuild will take longer and consume more time during the first run.
+
+#### Then, scan the QR code using Expo Go (iOS/Android) or choose to run on an emulator.
+
+## 🛠 Key Features
+
+## 🧪 Run Tests
+
+```sh
+yarn test
+```
+
+or
+
+```sh
+npm test
+```
+
+## 📝 Notes
+
+- Make sure you have **Expo Go** installed on your mobile device to run the app.
+- If you encounter issues, check your **Node.js** and **Expo CLI** versions.
+
+💡 **If you have any questions or need support, feel free to open an issue on GitHub or contact me!**
