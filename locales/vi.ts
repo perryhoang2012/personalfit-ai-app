@@ -16,6 +16,7 @@ export default {
   SIGN_UP_WITH_GOOGLE: "Google",
   SIGN_UP_WITH_FACEBOOK: "Facebook",
   OR_SIGN_UP_WITH: "Hoặc đăng ký với",
+  OR_SIGN_IN_WITH: "Hoặc đăng nhập với",
   FULL_NAME: "Họ và tên",
   EMAIL: "Email",
   PASSWORD: "Mật khẩu",
@@ -57,4 +58,9 @@ export default {
   CONTINUE: "Tiếp tục",
   CANCEL: "Huỷ",
   CONFIRM: "Xác nhận",
+
+  HOME: "Trang chủ",
+  ACTIVITY: "Hoạt động",
+  EXPLORE: "Khám phá",
+  ACCOUNT: "Tài khoản",
 };
