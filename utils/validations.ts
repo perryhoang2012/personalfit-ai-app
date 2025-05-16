@@ -1,4 +1,4 @@
-import { t } from "@/locales";
+import { t } from "../locales";
 
 export const fullNameRules = {
   required: t("FULL_NAME_REQUIRED"),

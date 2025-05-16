@@ -1,4 +1,3 @@
-import SvgComponent from "@/assets/svg/EyeSlash";
 import React, { useState } from "react";
 import {
   KeyboardTypeOptions,
@@ -12,11 +11,12 @@ import {
   View,
   ViewStyle,
 } from "react-native";
+import SvgComponent from "../assets/svg/EyeSlash";
 
-type Props = {
+interface InputProps {
   value: string;
   onChangeValue?: (value: string) => void;
-  keyboardType?: KeyboardTypeOptions | undefined;
+  keyboardType?: KeyboardTypeOptions;
   placeholder?: string;
   inputTitle?: string;
   isInputPassword?: boolean;
@@ -25,12 +25,12 @@ type Props = {
   onBlur?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
   styleContainer?: ViewStyle;
   styleInput?: StyleProp<TextInputProps>;
-};
+}
 
-const Input = ({
+const Input: React.FC<InputProps> = ({
   value,
   onChangeValue,
-  keyboardType,
+  keyboardType = "default",
   placeholder,
   inputTitle,
   isInputPassword,
@@ -39,8 +39,31 @@ const Input = ({
   onBlur,
   styleContainer,
   styleInput,
-}: Props) => {
+}) => {
   const [isShowPassword, setIsShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => setIsShowPassword((prev) => !prev);
+
+  const inputContainerStyle = {
+    flex: 1,
+    height: 54,
+    borderColor: "#404040",
+    borderWidth: 1,
+    paddingHorizontal: 16,
+    borderRadius: 19,
+    flexDirection: "row" as const,
+    justifyContent: "space-between" as const,
+    alignItems: "center" as const,
+  };
+
+  const textInputStyle = [
+    {
+      fontFamily: "inter-medium",
+      color: "white",
+      flex: 1,
+    },
+    styleInput,
+  ];
 
   return (
     <View style={styleContainer}>
@@ -49,40 +72,19 @@ const Input = ({
           {inputTitle}
         </Text>
       )}
-      <View
-        style={[
-          {
-            flex: 1,
-            height: 54,
-            borderColor: "#404040",
-            borderWidth: 1,
-            paddingHorizontal: 16,
-            borderRadius: 19,
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-          },
-        ]}
-      >
+      <View style={[inputContainerStyle]}>
         <TextInput
           value={value}
           onChangeText={onChangeValue}
-          keyboardType={keyboardType || "default"}
+          keyboardType={keyboardType}
           placeholder={placeholder}
           placeholderTextColor="#A0A0A0"
           secureTextEntry={isInputPassword && !isShowPassword}
           onBlur={onBlur}
-          style={[
-            {
-              fontFamily: "inter-medium",
-              color: "white",
-              flex: 1,
-            },
-            styleInput,
-          ]}
+          style={textInputStyle}
         />
         {isInputPassword && (
-          <TouchableOpacity onPress={() => setIsShowPassword((prev) => !prev)}>
+          <TouchableOpacity onPress={togglePasswordVisibility}>
             <SvgComponent />
           </TouchableOpacity>
         )}

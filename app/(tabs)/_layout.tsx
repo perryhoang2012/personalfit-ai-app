@@ -1,5 +1,5 @@
-import TabBar from "@/components/tabbar";
-import { t } from "@/locales";
+import TabBar from "../../components/TabBar";
+import { t } from "../../locales";
 import { Tabs } from "expo-router";
 
 export default function TabLayout() {

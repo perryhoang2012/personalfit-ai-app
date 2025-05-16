@@ -1,11 +1,11 @@
-import Chart from "@/assets/svg/Chart";
-import ChartInActive from "@/assets/svg/ChartInActive";
-import Home from "@/assets/svg/Home";
-import HomeInActive from "@/assets/svg/HomeInActiove";
-import ProfileCircle from "@/assets/svg/ProfileCircle";
-import ProfileCircleInActive from "@/assets/svg/ProfileCircleInActive";
-import Search from "@/assets/svg/Search";
-import SearchInActive from "@/assets/svg/SearchInActive";
+import Chart from "../assets/svg/Chart";
+import ChartInActive from "../assets/svg/ChartInActive";
+import Home from "../assets/svg/Home";
+import HomeInActive from "../assets/svg/HomeInActiove";
+import ProfileCircle from "../assets/svg/ProfileCircle";
+import ProfileCircleInActive from "../assets/svg/ProfileCircleInActive";
+import Search from "../assets/svg/Search";
+import SearchInActive from "../assets/svg/SearchInActive";
 import React, { useEffect } from "react";
 import { Pressable, StyleSheet } from "react-native";
 import Animated, {
@@ -26,23 +26,7 @@ type Props = {
 
 /**
  * A single tab button in the tab bar
- * @param {Props} props
- * @returns {JSX.Element}
  */
-
-const icons: {
-  [key: string]: ({ isFocused }: { isFocused: boolean }) => JSX.Element;
-} = {
-  index: ({ isFocused }: { isFocused: boolean }) =>
-    isFocused ? <Home /> : <HomeInActive />,
-  activity: ({ isFocused }: { isFocused: boolean }) =>
-    isFocused ? <Chart /> : <ChartInActive />,
-  explore: ({ isFocused }: { isFocused: boolean }) =>
-    isFocused ? <Search /> : <SearchInActive />,
-  account: ({ isFocused }: { isFocused: boolean }) =>
-    isFocused ? <ProfileCircle /> : <ProfileCircleInActive />,
-};
-
 const TabBarButton = ({
   isFocused,
   label,
@@ -66,21 +50,42 @@ const TabBarButton = ({
     opacity: interpolate(scale.value, [0, 1], [1, 0]),
   }));
 
+  const IconComponent = getIconComponent(routeName, isFocused);
+
   return (
     <Pressable
       style={styles.container}
       onPress={handlePress}
       onLongPress={handleLongPress}
     >
-      <Animated.View style={animatedIconStyle}>
-        {icons[routeName]({ isFocused })}
-      </Animated.View>
+      <Animated.View style={animatedIconStyle}>{IconComponent}</Animated.View>
 
       <Animated.Text style={[{ color, fontSize: 11 }, animatedTextStyle]}>
         {label}
       </Animated.Text>
     </Pressable>
   );
+};
+
+/**
+ * Returns the appropriate icon component based on route name and focus state
+ */
+const getIconComponent = (
+  routeName: string,
+  isFocused: boolean
+): JSX.Element => {
+  switch (routeName) {
+    case "index":
+      return isFocused ? <Home /> : <HomeInActive />;
+    case "activity":
+      return isFocused ? <Chart /> : <ChartInActive />;
+    case "explore":
+      return isFocused ? <Search /> : <SearchInActive />;
+    case "account":
+      return isFocused ? <ProfileCircle /> : <ProfileCircleInActive />;
+    default:
+      return <></>;
+  }
 };
 
 const styles = StyleSheet.create({

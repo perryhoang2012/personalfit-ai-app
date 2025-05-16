@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import TabBarButton from "./tabbarbutton";
+import TabBarButton from "./TabBarButton";
 
 type Props = {
   state: any;
@@ -17,9 +17,13 @@ interface Route {
 const TabBar = ({ state, descriptors, navigation }: Props) => {
   const primaryColor = "#0891b2";
   const greyColor = "#737373";
+  const hiddenRoutes = ["_sitemap", "+not-found"];
+
   return (
     <View style={styles.tabbar}>
       {state.routes.map((route: Route, index: number) => {
+        if (hiddenRoutes.includes(route.name)) return null;
+
         const { options } = descriptors[route.key];
         const label =
           options.tabBarLabel !== undefined
@@ -27,8 +31,6 @@ const TabBar = ({ state, descriptors, navigation }: Props) => {
             : options.title !== undefined
             ? options.title
             : route.name;
-
-        if (["_sitemap", "+not-found"].includes(route.name)) return null;
 
         const isFocused = state.index === index;
 

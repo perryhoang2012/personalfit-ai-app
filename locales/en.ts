@@ -25,7 +25,6 @@ export default {
   AGREE_TERMS:
     "By proceeding, you agree with our Terms of Service, Privacy Policy, and Cookie Policy.",
   CREATE_AN_ACCOUNT: "Create an account",
-
   EMAIL_REQUIRED: "Email is required",
   INVALID_EMAIL: "Invalid email address",
   INVALID_PASSWORD: "The password must be at least 8 characters long.",
@@ -61,10 +60,8 @@ export default {
   SELECT_DATE_OF_BIRTH: "Select a Date of Birth",
   SELECT_DATE_OF_BIRTH_DESC:
     "No notification right now, notifications about your activity will show up here.",
-
   HEIGHT_DESC: "Set a height based on your body",
   WEIGHT_DESC: "Set a weight based on your body",
-
   HOME: "Home",
   ACTIVITY: "Activity",
   EXPLORE: "Explore",

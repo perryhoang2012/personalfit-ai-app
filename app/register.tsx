@@ -1,9 +1,5 @@
-import { IMAGES } from "@/assets/images";
-import Input from "@/components/input";
-import { t } from "@/locales";
-import { emailRules, passwordRules } from "@/utils/validationRules";
-import { Link, useNavigation } from "expo-router";
-import { useEffect } from "react";
+import { useRouter } from "expo-router";
+import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import {
   Image,
@@ -13,13 +9,13 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { IMAGES } from "../assets/images";
+import Input from "../components/Input";
+import { t } from "../locales";
+import { emailRules, fullNameRules, passwordRules } from "../utils/validations";
 
-export default function SignIn() {
-  const navigation = useNavigation();
-
-  useEffect(() => {
-    navigation.setOptions({ headerShown: false });
-  }, [navigation]);
+export default function RegisterScreen({ navigation }: any) {
+  const router = useRouter();
 
   const {
     getValues,
@@ -32,15 +28,19 @@ export default function SignIn() {
 
   const onSubmit = () => {};
 
+  const goToSignIn = () => {
+    router.back();
+  };
+
   return (
     <View className="flex-1 bg-black px-5 justify-center">
       <ScrollView className="flex-1">
         <View className="mt-[150]">
           <Text className="text-[20px] font-semibold leading-[28px] text-neutral">
-            {t("WELCOME_BACK")}
+            {t("CREATE_ACCOUNT")}
           </Text>
           <Text className="text-[14px] color-textSecondary leading-[22px] mt-6">
-            {t("SIGN_IN_DESC")}
+            {t("CREATE_ACCOUNT_DESC")}
           </Text>
         </View>
         <View className="justify-between flex-row items-center mt-[40]">
@@ -66,12 +66,28 @@ export default function SignIn() {
           <View className="flex-1 h-[1px] bg-[#444]" />
           <View className="mx-[10px] items-center">
             <Text className="font-regular color-neutral text-[12px] leading-[18px]">
-              {t("OR_SIGN_IN_WITH")}
+              {t("OR_SIGN_UP_WITH")}
             </Text>
           </View>
           <View className="flex-1 h-[1px] bg-[#444]" />
         </View>
         <View className="flex-1">
+          <Controller
+            control={control}
+            name="fullName"
+            rules={fullNameRules}
+            render={({ field: { onChange, onBlur, value } }) => (
+              <Input
+                placeholder={t("FULL_NAME")}
+                value={value}
+                onChangeValue={onChange}
+                styleContainer={styles.containerInput}
+                error={errors.fullName?.message as string}
+                isSubmitted={isSubmitted}
+                onBlur={onBlur}
+              />
+            )}
+          />
           <Controller
             control={control}
             name="email"
@@ -106,32 +122,29 @@ export default function SignIn() {
               />
             )}
           />
-          <View className="mt-[4px] flex-row justify-end">
-            <TouchableOpacity>
-              <Text className="font-medium text-[14px] color-neutral">
-                {t("FORGOT_PASSWORD")}
-              </Text>
-            </TouchableOpacity>
-          </View>
+
           <View className="mt-[90] items-center">
             <TouchableOpacity
               className="rounded-[30px] w-full items-center justify-center h-[46px] bg-neutral"
               onPress={handleSubmit(onSubmit)}
             >
               <Text className="font-medium text-[14px] color-gray900 leading-[22px]">
-                {t("LOG_IN")}
+                {t("CREATE_AN_ACCOUNT")}
               </Text>
             </TouchableOpacity>
-            <Link href={"/sign-up"} asChild>
-              <TouchableOpacity
-                className="items-center justify-center mt-[28px] w-full h-[46px]"
-                onPress={() => {}}
-              >
-                <Text className="font-medium text-[14px] color-neutral leading-[22px]">
-                  {t("NO_ACCOUNT_GO_TO_SIGN_UP")}
+            <TouchableOpacity
+              className="items-center justify-center mt-[28px] w-full h-[46px]"
+              onPress={() => {
+                goToSignIn();
+              }}
+            >
+              <Text className="font-medium text-[14px] color-neutral leading-[22px]">
+                {t("HAVE_ACCOUNT")}{" "}
+                <Text className="font-medium color-neutral text-[14px]">
+                  {t("SIGN_IN")}
                 </Text>
-              </TouchableOpacity>
-            </Link>
+              </Text>
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>
@@ -141,7 +154,6 @@ export default function SignIn() {
 
 const styles = StyleSheet.create({
   containerInput: {
-    marginBottom: 10,
-    // backgroundColor: "red",
+    marginBottom: 8,
   },
 });
