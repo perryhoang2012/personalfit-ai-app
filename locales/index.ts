@@ -1,22 +1,43 @@
+import i18next from "i18next";
+import { initReactI18next } from "react-i18next";
+import { MMKV } from "react-native-mmkv";
 import en from "./en";
 import vi from "./vi";
 
-type Locale = "en" | "vi";
+export type Language = "en" | "vi";
 
-type LocaleStrings = {
-  [key: string]: string;
+const storage = new MMKV();
+const LANG_KEY = "@app_language";
+
+const resources = {
+  en: {
+    translation: en,
+  },
+  vi: {
+    translation: vi,
+  },
 };
 
-let currentLocale: Locale = "en";
+i18next.use(initReactI18next).init({
+  resources,
+  lng: storage.getString(LANG_KEY) || "en",
+  fallbackLng: "en",
+  interpolation: {
+    escapeValue: false,
+  },
+});
 
-const strings: { [locale in Locale]: LocaleStrings } = {
-  en,
-  vi,
+export const setLanguage = (lang: Language) => {
+  storage.set(LANG_KEY, lang);
+  i18next.changeLanguage(lang);
 };
-export const setLocale = (locale: Locale) => {
-  currentLocale = locale;
+
+export const getLanguage = (): Language => {
+  return (storage.getString(LANG_KEY) as Language) || "en";
 };
 
 export const t = (key: string): string => {
-  return strings[currentLocale][key] || key;
+  return i18next.t(key);
 };
+
+export default i18next;

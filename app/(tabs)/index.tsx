@@ -1,9 +1,20 @@
-import { StyleSheet, Text, View } from "react-native";
+import { t } from "../../locales";
+import { getStatusBarHeight } from "../../utils/uiHelper";
+import * as React from "react";
+import { View, Text } from "react-native";
 
-export default function HomeScreen() {
+export default function Home() {
+  const topPadding = getStatusBarHeight + 40;
+
   return (
-    <View className="flex-1 justify-center items-center bg-error">
-      <Text className="font-thin size-10 color-indigo">12312</Text>
+    <View
+      className={`flex-1 bg-background`}
+      style={{ paddingTop: topPadding, backgroundColor: "red" }}
+    >
+      <View />
+      <Text className="text-2xl font-bold text-center accent-black">
+        {t("HOME")}
+      </Text>
     </View>
   );
 }

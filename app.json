@@ -14,7 +14,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./assets/images/icon.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.perryhoang2012.personalfitaiapp"
@@ -22,97 +22,34 @@
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/icon.png"
     },
     "plugins": [
       "expo-router",
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
+          "image": "./assets/images/icon.png",
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
+      ],
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "./assets/fonts/Inter-Regular.ttf",
+            "./assets/fonts/Inter-Medium.ttf",
+            "./assets/fonts/Inter-SemiBold.ttf",
+            "./assets/fonts/Inter-Bold.ttf"
+          ]
+        }
       ]
     ],
     "experiments": {
-      "typedRoutes": true
-    },
-
-    "fonts": [
-      {
-        "asset": "./assets/fonts/Inter-Black.ttf",
-        "name": "Black"
-      },
-      {
-        "asset": "./assets/fonts/Inter-BlackItalic.ttf",
-        "name": "BlackItalic"
-      },
-      {
-        "asset": "./assets/fonts/Inter-Bold.ttf",
-        "name": "Bold"
-      },
-      {
-        "asset": "./assets/fonts/Inter-BoldItalic.ttf",
-        "name": "BoldItalic"
-      },
-      {
-        "asset": "./assets/fonts/Inter-ExtraBold.ttf",
-        "name": "ExtraBold"
-      },
-      {
-        "asset": "./assets/fonts/Inter-ExtraBoldItalic.ttf",
-        "name": "ExtraBoldItalic"
-      },
-      {
-        "asset": "./assets/fonts/Inter-ExtraLight.ttf",
-        "name": "ExtraLight"
-      },
-      {
-        "asset": "./assets/fonts/Inter-ExtraLightItalic.ttf",
-        "name": "ExtraLightItalic"
-      },
-      {
-        "asset": "./assets/fonts/Inter-Italic.ttf",
-        "name": "Italic"
-      },
-      {
-        "asset": "./assets/fonts/Inter-Light.ttf",
-        "name": "Light"
-      },
-      {
-        "asset": "./assets/fonts/Inter-LightItalic.ttf",
-        "name": "LightItalic"
-      },
-      {
-        "asset": "./assets/fonts/Inter-Medium.ttf",
-        "name": "Medium"
-      },
-      {
-        "asset": "./assets/fonts/Inter-MediumItalic.ttf",
-        "name": "MediumItalic"
-      },
-      {
-        "asset": "./assets/fonts/Inter-Regular.ttf",
-        "name": "Regular"
-      },
-      {
-        "asset": "./assets/fonts/Inter-SemiBold.ttf",
-        "name": "SemiBold"
-      },
-      {
-        "asset": "./assets/fonts/Inter-SemiBoldItalic.ttf",
-        "name": "SemiBoldItalic"
-      },
-      {
-        "asset": "./assets/fonts/Inter-Thin.ttf",
-        "name": "Thin"
-      },
-      {
-        "asset": "./assets/fonts/Inter-ThinItalic.ttf",
-        "name": "ThinItalic"
-      }
-    ]
+      "typedRoutes": true,
+      "tsconfigPaths": true
+    }
   }
 }
