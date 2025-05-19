@@ -1,6 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
 import * as React from "react";
 import { ActivityIndicator, ScrollView, Text, View } from "react-native";
+import { useQueryWithLoading } from "../../hooks/useQueryWithLoading";
 import { postsApi } from "../../services/api/posts";
 import { getStatusBarHeight } from "../../utils/uiHelper";
 
@@ -12,11 +12,10 @@ export default function Home() {
     data: posts,
     isLoading,
     error,
-  } = useQuery({
+  } = useQueryWithLoading({
     queryKey: ["posts"],
     queryFn: postsApi.getPosts,
   });
-  console.log(process.env.PUBLIC_API_URL);
 
   return (
     <View className="flex-1 bg-background" style={{ paddingTop: topPadding }}>
