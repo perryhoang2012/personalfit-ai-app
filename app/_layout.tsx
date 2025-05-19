@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import "../global.css";
 import { Stack } from "expo-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { NetworkStatus } from "../components/NetworkStatus";
 
 if (__DEV__) {
   require("../config/ReactotronConfig");
@@ -33,6 +34,7 @@ export default function RootLayout() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <NetworkStatus />
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen
