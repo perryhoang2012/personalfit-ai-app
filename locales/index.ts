@@ -1,12 +1,11 @@
 import i18next from "i18next";
 import { initReactI18next } from "react-i18next";
-import { MMKV } from "react-native-mmkv";
 import en from "./en";
 import vi from "./vi";
+import { storage } from "../config/MMKVConfig";
 
 export type Language = "en" | "vi";
 
-const storage = new MMKV();
 const LANG_KEY = "@app_language";
 
 const resources = {

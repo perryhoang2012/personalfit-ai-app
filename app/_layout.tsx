@@ -4,6 +4,11 @@ import { useTranslation } from "react-i18next";
 import "../global.css";
 import { Stack } from "expo-router";
 
+if (__DEV__) {
+  require("../config/ReactotronConfig");
+  console.log("🔧 Reactotron Configured");
+}
+
 export default function RootLayout() {
   const { i18n } = useTranslation();
 
